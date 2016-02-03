@@ -47,7 +47,7 @@ class Words {
 
 
 //: ## Q3: More Functions and Object Initialization
-    func isAnagram() -> Bool? {
+    func isAnagram() -> Bool {
         var countLetters : [Character : Int] = [Character: Int]() //Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
@@ -83,7 +83,7 @@ class Words {
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -91,7 +91,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: In line X, countLetters is declared but not initialized, so when it is referenced in line Y, the variable is uninitialized. The return type might be nil according to the code at the end of the function, so the declaration of the function must take the output into account using an optional operator on the output. The function type needs to be non-static as well because of the self references.
+//: In line X, countLetters is declared but not initialized, so when it is referenced in line Y, the variable is uninitialized. The return type might be nil according to the code at the end of the function, so the declaration of the function must take the output into account using an optional operator on the output - or the output needs to be changed from nil to true [better option]. The function type needs to be non-static as well because of the self references.
     
     
 }
