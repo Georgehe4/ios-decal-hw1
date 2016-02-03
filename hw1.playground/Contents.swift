@@ -22,31 +22,33 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: The values passed into the init function and those set to the instance variables are not the same because the optional variables that are passed in befomre force unwrapped to a non-optional variable type before they are set.
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(words: [String]) -> Bool {
+    class func arePalindromes(words: [String]) -> Bool? {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: The 'let' keyword in the for loops defines i as an immutable data type, yet we try to mutate it. The function also never returns anything in the case of when a words are a palindromes [when the return value is true] so that must be addressed as well. The function should also be a class function in context of how it is called below, since execution of the function is not tied to an instance of the class.
+    
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+    func isAnagram() -> Bool? {
+        var countLetters : [Character : Int] = [Character: Int]() //Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
@@ -89,7 +91,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: In line X, countLetters is declared but not initialized, so when it is referenced in line Y, the variable is uninitialized. The return type might be nil according to the code at the end of the function, so the declaration of the function must take the output into account using an optional operator on the output. The function type needs to be non-static as well because of the self references.
     
     
 }
